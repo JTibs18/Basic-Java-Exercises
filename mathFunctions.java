@@ -6,7 +6,6 @@ public class mathFunctions {
     int num = numReader();
     String operator = operatorReader();
     chooseFunction(num, operator);
-
     }
 
 
