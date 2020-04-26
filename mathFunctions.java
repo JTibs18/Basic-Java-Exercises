@@ -3,38 +3,51 @@ import java.util.Scanner;
 public class mathFunctions {
   public static void main(String[] args){
     System.out.println("Welcome to math functions!");
-    int num1;
-    int num2;
-    num1 = reader("first");
-    num2 = reader("second");
-
-    int result = add(num1, num2);
-    System.out.println("The sum is " + num1 + " + "+ num2 + " = " + result);
-
-    int difference = subtract(num1, num2);
-    System.out.println("The difference is " + num1 + " - " + num2 + " = " + difference);
-
-    int quotient = divide (num1, num2);
-    System.out.println("The quotient is " + num1 + " / " + num2 + " = " + quotient);
-
-    int product = multiply(num1, num2);
-    System.out.println("The product is " + num1 + " * " + num2 + " = " + product);
+    int num = numReader();
+    String operator = operatorReader();
+    chooseFunction(num, operator);
 
     }
-    
-    //gets the user to select a math function
-//    public static int chooseFunction(){
-//    System.out.println("Please choose a math function:");
-//    }
 
-  //get the user's input for numbers
-  public static int reader(String num){
+
+  //function gets the user's input for numbers
+  public static int numReader(){
     Scanner iReader = new Scanner (System.in);
-    System.out.print("Please enter the " + num + " number: ");
+    System.out.print("Please enter a number: ");
     String n = iReader.nextLine();
     int i =  Integer.parseInt(n);
     return i;
   }
+
+  //function reads the users input for a mathematical math operator
+  public static String operatorReader(){
+    Scanner iReader = new Scanner (System.in);
+    System.out.print("Please enter a mathematical operator: ");
+    String n = iReader.nextLine();
+    return n;
+  }
+
+      //gets the user to select a math function
+      public static void chooseFunction(int num1, String op){
+          int num2 = numReader();
+          int result =0;
+         if(op.equals("+")){
+          result = add(num1, num2);
+        }else if(op.equals("-")){
+          result = subtract(num1,num2);
+        }else if(op.equals("*")){
+          result = multiply(num1, num2);
+        }else if (op.equals("/")){
+          result = divide(num1, num2);
+        }else{
+          System.out.println("ERROR!");
+        }
+          printResult(num1, num2, result, op);
+      }
+
+      public static void printResult(int n1, int n2, int r, String op){
+        System.out.println(n1 + op + n2 + "=" + r);
+      }
 
   //function to add two numbers
   public static int add(int n1, int n2){
